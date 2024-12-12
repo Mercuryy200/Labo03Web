@@ -1,4 +1,7 @@
 <template>
+    <v-container>
+
+    
 <v-carousel
  height="400"
     show-arrows="hover"
@@ -73,6 +76,7 @@
     </div></v-carousel-item>
   
 </v-carousel>
+</v-container>
 
 </template>
 

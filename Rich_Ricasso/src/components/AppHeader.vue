@@ -9,8 +9,8 @@
         </nav>
         <div class="icon-right">
             <router-link to="/login"><span class="material-icons">account_circle</span></router-link>
-            <span class="material-icons">mail</span>
-            <span class="material-icons">shopping_cart</span>
+            <router-link to="/infolettre"><span class="material-icons">mail</span></router-link>
+            <router-link to="/"><span class="material-icons">shopping_cart</span></router-link>
         </div>
       </header>
 

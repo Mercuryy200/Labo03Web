@@ -1,8 +1,15 @@
 <template>
+ <Filtre />
     <Produits />
 </template>
 
 <script>
-import FilterSideBar from '@/components/FilterSideBar.vue';
 import Produits from '@/components/Produits.vue';
+import {defineComponent} from "vue";
+import Filtre from "@/components/Filtre.vue";
+
+export default defineComponent({
+  components: {Filtre}
+})
+
 </script>
