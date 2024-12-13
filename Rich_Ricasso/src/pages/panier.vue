@@ -1,6 +1,6 @@
 <script setup>
 
-
+import ShoppingCart from "@/components/ShoppingCart.vue";
 import ListeProduits from "@/components/ListeProduits.vue";
 </script>
 

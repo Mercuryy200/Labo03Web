@@ -80,11 +80,11 @@ const handleLogin = async () => {
     const userId = response.data?.id;
 
     if (!userId) {
-      throw new Error("ID introuvable.");
+      throw new Error("ID utilisateur introuvable dans la réponse.");
     }
 
     console.log("User ID Extracted:", userId);
-    await router.push(`/users/${userId}`); // Redirect using the ID
+    await router.push(/users/${ userId }); // Redirect using the ID
   } catch (error) {
     console.error("Login Error:", error.message);
   }

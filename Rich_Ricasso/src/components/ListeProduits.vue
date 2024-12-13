@@ -6,8 +6,6 @@ import CarteProduit from "@/components/CarteProduit.vue";
 <template>
 <v-sheet class="d-flex flex-column  ga-3">
   <CarteProduit/>
-  <CarteProduit/>
-  <CarteProduit/>
 
   <v-btn>Acheter</v-btn>
 </v-sheet>
