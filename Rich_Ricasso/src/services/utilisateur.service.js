@@ -1,3 +1,7 @@
+import Utilisateur from "@/models/Utilisateur";
+
+
+
 export const fetchUtilisateur = async (id) => {
   try {
     const response = await fetch(`http://localhost:4208/api/utilisateurs/${id}`);
@@ -47,7 +51,7 @@ export const loginUser = async (data) => {
     const response = await fetch("http://localhost:4208/api/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Ensure this is correct
+        "Content-Type": "application/json", 
       },
       body: data,
     });
@@ -58,12 +62,11 @@ export const loginUser = async (data) => {
     }
 
     const result = await response.json();
-    
+    console.log("Parsed Response from Backend:", result); 
 
     return {
       success: true,
       message: result.message,
-      data: result.data, 
     };
   } catch (error) {
     console.error("Erreur lors de l'appel à l'API :", error.message);
@@ -73,3 +76,5 @@ export const loginUser = async (data) => {
     };
   }
 };
+
+

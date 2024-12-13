@@ -66,6 +66,9 @@
 </template>
 
 <script setup>
+import { useProductsStore } from '@/store/cart.js';
+
+const productsStore = useProductsStore();
 import { ref, onMounted } from "vue";
 import {fetchProduit} from "@/services/product.service";
 import { useRoute } from 'vue-router'
