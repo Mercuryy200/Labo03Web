@@ -1,28 +1,30 @@
-<script setup>
+<script>
+import { useCartStore } from '@/stores/cart';
 
-</script>
+export default {
+  setup() {
+    const cartStore = useCartStore();
+
+    return {
+      cartItems: cartStore.cart,
+      cartTotal: cartStore.cartTotalPrice,
+      addToCart: cartStore.addToCart,
+      removeFromCart: cartStore.removeFromCart,
+    };
+  },
+};</script>
 
 <template>
-
-<v-card max-width="600" height="100" class="d-flex ga-3" >
-  <v-img
-    color="surface-variant"
-    height="200"
-    max-width="200"
-    aspect-ratio=""
-    src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg"
-    cover
-></v-img>
-<v-card-text>
-  <h2>Name</h2>
-  <p>taille</p>
-  <p>price</p>
-  <v-btn density="compact" icon="mdi-plus"></v-btn>
-</v-card-text>
-
-</v-card>
-
-
+     <v-container v-if="cartItems.length > 0">
+      <v-card v-for="item in cartItems" :key="item.id">
+        <v-img :src="item.image" width="100px" ></v-img>
+        <v-card-title>{{ item.nom }} ({{ item.quantity }})</v-card-title>
+        <v-card-subtitle>${{ (item.prix * item.quantity).toFixed(2) }}</v-card-subtitle>
+        <v-btn color="error" @click="removeFromCart(item.id)">Remove</v-btn>
+      </v-card>
+    </v-container>
+<p v-else>Your cart is empty.</p>
+    <h4>Total: ${{ cartTotal.toFixed(2) }}</h4>
 </template>
 
 <style scoped>

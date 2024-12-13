@@ -6,7 +6,9 @@
  height="400"
     show-arrows="hover"
     cycle
-    hide-delimiter-background>
+    hide-delimiter-background
+    aspect-ratio="1">
+
   <v-carousel-item>
     <div class="d-flex fill-height">
      <div class="w-50">
@@ -14,6 +16,7 @@
         src="../assets/images/tshirt1.webp"
           alt="Product Image"
           class="w-100"
+          aspect-ratio="1"
         />
       </div>
       <div class="w-50 d-flex justify-center align-center">

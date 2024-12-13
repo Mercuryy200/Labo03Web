@@ -6,9 +6,10 @@ export const useCartStore = defineStore('cart', {
   }),
   getters: {
     cartItemCount: (state) => state.cart.length,
-    cartTotalPrice: (state) => state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    cartTotalPrice: (state) => state.cart.reduce((total, item) => total + item.prix * item.quantity, 0.00),
   },
   actions: {
+    
     addToCart(product) {
       const existingItem = this.cart.find((item) => item.id === product.id);
       if (existingItem) {
@@ -16,6 +17,7 @@ export const useCartStore = defineStore('cart', {
       } else {
         this.cart.push({ ...product, quantity: 1 });
       }
+        
     },
     removeFromCart(productId) {
       this.cart = this.cart.filter((item) => item.id !== productId);

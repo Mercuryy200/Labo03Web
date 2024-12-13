@@ -57,7 +57,7 @@
                    
                 </v-container>
             </v-col>
-             <v-btn color="primary" class="mt-4">
+             <v-btn color="primary" class="mt-4" @click="cartStore.addToCart(produit)">
                         Ajouter
                     </v-btn>
             
@@ -66,9 +66,9 @@
 </template>
 
 <script setup>
-import { useProductsStore } from '@/store/cart.js';
+import { useCartStore } from '@/stores/cart';
 
-const productsStore = useProductsStore();
+const cartStore = useCartStore();
 import { ref, onMounted } from "vue";
 import {fetchProduit} from "@/services/product.service";
 import { useRoute } from 'vue-router'
@@ -81,19 +81,14 @@ onMounted(() => {
   fetchProduit(route.params.id).then((data)=>{
       console.log(data);
       produit.value = data;
-    }
-
-  );
-
+    });
 });
 
 
-const tailleArray = computed(() => {
-
-  return produit.value.taille
-    ? produit.value.taille.split(',')
-    : [];
-});
+const tailleArray = computed(() => { 
+    return produit.value.taille ? produit.value.taille.split(',') : [];
+}
+);
 </script>
 
 <style scoped>

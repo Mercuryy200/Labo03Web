@@ -1,9 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "source-sans-pro", sans-serif;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    height: 100vh;
-    background-image: url('@/assets/bg_img.jpeg'); /* Update this path */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 }
