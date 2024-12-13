@@ -80,7 +80,7 @@ const handleLogin = async () => {
     const userId = response.data?.id;
 
     if (!userId) {
-      throw new Error("ID utilisateur introuvable dans la réponse.");
+      throw new Error("ID introuvable.");
     }
 
     console.log("User ID Extracted:", userId);
