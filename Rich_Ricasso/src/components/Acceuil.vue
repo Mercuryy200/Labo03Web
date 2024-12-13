@@ -7,11 +7,7 @@
 </template>
 
 <script setup>
-import InfolettrePopUp from './InfolettrePopUp.vue';
-import Produits from './Produits.vue';
-import ParallaxBackground from "./ParallaxBackground.vue";
-import HelloWorld from './HelloWorld.vue';
-import Carousel from './Carousel.vue';
+import AboutRich from "./AboutRich.vue";
 import Showcase from './Showcase.vue';
 </script>
 

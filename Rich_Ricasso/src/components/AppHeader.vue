@@ -1,29 +1,26 @@
 <template>
-        <header class="app-header">
-        <div class="icon-left">
-            <img src="@/assets/img/web/logov3.png" alt="logo">
-        </div>
-        <nav class="tabs">
+  <header class="app-header">
+    <div class="left-side">
+      <v-img class="logo" src="@/assets/img/logov3.png" width="150"></v-img>
+</div>
+<nav class="tabs">
             <button class="tab"><router-link class="router-link" to="/">Acceuil</router-link></button>
-            <button class="tab"><router-link class="router-link" to="/products">Produits</router-link></button>
+            <button class="tab"><router-link class="router-link" to="/produits">Produits</router-link></button>
         </nav>
         <div class="icon-right">
-            <router-link to="/login"><span class="material-icons">account_circle</span></router-link>
-            <router-link to="/infolettre"><span class="material-icons">mail</span></router-link>
-            <router-link to="/"><span class="material-icons">shopping_cart</span></router-link>
-        </div>
-      </header>
-
+            <router-link class="icons" to="/login"><span class="material-icons">account_circle</span></router-link>
+            <router-link class="icons" to="/infolettre"><span class="material-icons">mail</span></router-link>
+            <router-link  class="icons"to="/panier"><span class="material-icons">shopping_cart</span></router-link>
+    </div>
+  </header>
 </template>
 
-
 <script>
-export default {
-    name: "HeaderBar",
-};
+
 </script>
 
 <style scoped>
+
 /* Transparent header with purple tone */
 .app-header {
     overflow: hidden;
@@ -34,10 +31,6 @@ export default {
     z-index: 1;
     background-color: white;
     justify-content: space-between;
-}
-
-img{
-    width: 150px;
 }
 .router-link {
     float: left;
@@ -59,12 +52,14 @@ img{
 span{
     color: black;
 }
-/* Left and Right Icons */
+
 .icon-left,
 .icon-right {
     font-size: 24px;
     color: #fff;
-    /* White icons for contrast */
+}
+.icons{
+  padding: 15px;
 }
 
 /* Tabs styling */
@@ -88,4 +83,5 @@ span{
     /* Lighter purple on hover */
     border-bottom: 2px double #fff;
 }
+
 </style>

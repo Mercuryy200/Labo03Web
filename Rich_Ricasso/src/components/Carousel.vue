@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+ <v-container>
 
     
 <v-carousel
@@ -10,8 +10,8 @@
   <v-carousel-item>
     <div class="d-flex fill-height">
      <div class="w-50">
-        <img
-          src="../assets/img/produits/shirt1.webp"
+        <img 
+        src="../assets/images/tshirt1.webp"
           alt="Product Image"
           class="w-100"
         />
@@ -27,14 +27,14 @@
   <v-carousel-item>
        <div class="d-flex fill-height">
   
-\      <div class="w-50 d-flex justify-center align-center">
+      <div class="w-50 d-flex justify-center align-center">
         <div class="text-h3 text-center">
           Une cravatte d'édition limitée disponible en prévente pour les membres de RICASSO
         </div>
       </div>
          <div class="w-50">
-        <img
-          src="../assets/img/produits/tie3.webp"
+        <img 
+         src="../assets/images/tie1.webp"
           alt="Product Image"
           class="w-100"
         />
@@ -46,7 +46,7 @@
       <div class="d-flex fill-height">
       <div class="w-50">
         <img
-          src="../assets/img/produits/tshirt5.webp"
+         src="../assets/images/tie4.webp"
           alt="Product Image"
           class="w-100"
         />
@@ -63,12 +63,12 @@
       
      <div class="w-50 d-flex justify-center align-center">
         <div class="text-h3 text-center">
-          Une cravatte d'édition limitée disponible en prévente pour les membres de RICASSO
+          Une chemise d'édition limitée disponible en prévente pour les membres de RICASSO
         </div>
       </div>
       <div class="w-50">
         <img
-          src="../assets/img/produits/tie6.webp"
+         src="../assets/images/tshirt5.webp"
           alt="Product Image"
           class="w-100"
         />
@@ -77,18 +77,23 @@
   
 </v-carousel>
 </v-container>
-
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            
-        }
-    },
-}
-</script>
-<style scoped>
+<script setup >
 
-</style>
+import {onMounted, ref} from "vue";
+import {fetchProduits} from "@/services/product.service";
+const produits = ref([]);
+onMounted(() => {
+  fetchProduits().then((result) => {
+    if (result.success) {
+      produits.value = result.products;
+    } else {
+      console.error("Failed to fetch products:", result.error);
+    }
+
+  });
+});
+
+
+</script>

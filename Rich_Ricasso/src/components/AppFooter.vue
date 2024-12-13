@@ -1,117 +1,66 @@
 <template>
-  <v-footer class="bg-grey-lighten-1">
-    <v-row justify="center" no-gutters>
-      <v-btn
-        v-for="link in links"
-        :key="link"
-        class="mx-2"
-        color="white"
-        rounded="xl"
-        variant="text"
-      >
-        {{ link }}
-      </v-btn>
-      <v-col class="text-center mt-4" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Rich Ricasso</strong>
-      </v-col>
-    </v-row>
+  <v-footer id="footer-color" border absolute>
+    <v-sheet class="d-flex align-center justify-center flex-wrap text-center mx-auto px-4" >
+    <Infolettre />
+
+
+     <v-container>
+      <div class="footerLinks">
+        <div class="infoFooter">
+            <h4>À PROPOS</h4>
+            <router-link  class="links" to="https://maps.app.goo.gl/vE8FAw2T2c7abuw99" target="_blank">Trouver une boutique</router-link>
+            <router-link class="links" to="/">À propos du créateur</router-link>
+        </div>
+        <div class="navFooter">
+            <h4>NAVIGATION</h4>
+            <router-link class="links" to="/">Accueil</router-link>
+            <router-link class="links" to="/produits">Catalogue</router-link>      
+            </div>
+        <div class="icons">
+            <h4>SUIVEZ-NOUS</h4>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
+    </div>
+    <hr>
+    <p>© Ricasso 2022 - 2024 | VAT n. IT1099879158</p>
+     </v-container>
+    </v-sheet>
+
   </v-footer>
 </template>
+
 <script>
-  export default {
-    data: () => ({
-      links: [
-        'Acceuil',
-        'Produits'
-      ],
-    }),
-  }
+import Infolettre from "@/components/Infolettre.vue";
+
+export default {
+  components: {
+    Infolettre,
+  },
+};
 </script>
 
-<style>
-/* Footer Container */
-.footer {
-  background-color: rgba(128, 0, 128, 0.7);
-  /* Transparent purple */
-  color: white;
-  text-align: center;
-  padding: 20px 0;
+<style scoped>
+.footerLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
-/* Center Content */
-.footer-content {
-  max-width: 600px;
-  margin: 0 auto;
+.links{
+  text-decoration: none;
+  color:black;
 }
-
-/* Newsletter Form */
-.newsletter-form {
-  margin-bottom: 20px;
+.links:hover{
+  color: gray;
 }
-
-.input-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+.links:visited{
+  color:black;
 }
-
-input[type="email"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #6200ea;
-  /* Purple button */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #4a00c2;
-  /* Darker purple on hover */
-}
-
-/* Popup Message */
-.popup-message {
-  margin-top: 15px;
-  color: #90ee90;
-  /* Light green for confirmation */
-  font-size: 14px;
-  animation: fadeInOut 3s ease;
-}
-
-/* Copyright Text */
-.copyright {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-/* Animations */
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
+.infoFooter, .navFooter{
+    display: flex;
+    flex-direction: column;
 }
 </style>
