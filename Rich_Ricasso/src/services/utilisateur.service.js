@@ -1,19 +1,22 @@
 import Utilisateur from "@/models/Utilisateur";
 
-
-
 export const fetchUtilisateur = async (id) => {
   try {
-    const response = await fetch(`http://localhost:4208/api/utilisateurs/${id}`);
+    const response = await fetch(
+      `http://localhost:4208/api/utilisateurs/${id}`
+    );
     const data = await response.json();
     console.log("Utilisateur:", id, data);
     return new Utilisateur(id, data);
   } catch (error) {
-    console.error(`Erreur lors de la récupération de l'utilisateur ${id} :`, error);
+    console.error(
+      `Erreur lors de la récupération de l'utilisateur ${id} :`,
+      error
+    );
   }
 };
 
-export const createUtilisateur = async (data) =>{
+export const createUtilisateur = async (data) => {
   try {
     const response = await fetch("http://localhost:4208/api/utilisateurs", {
       method: "POST",
@@ -23,14 +26,15 @@ export const createUtilisateur = async (data) =>{
       },
     });
 
-
     if (!response.ok) {
       const errorData = await response.text();
-      throw new Error(errorData || "Une erreur est survenue lors de la création.");
+      throw new Error(
+        errorData || "Une erreur est survenue lors de la création."
+      );
     }
 
     const result = await response.json();
-    console.log(result)
+    console.log(result);
     return {
       success: true,
       message: result.message,
@@ -43,15 +47,14 @@ export const createUtilisateur = async (data) =>{
       message: error.message || "Erreur inconnue.",
     };
   }
-
-}
+};
 
 export const loginUser = async (data) => {
   try {
     const response = await fetch("http://localhost:4208/api/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
       },
       body: data,
     });
@@ -62,19 +65,18 @@ export const loginUser = async (data) => {
     }
 
     const result = await response.json();
-    console.log("Parsed Response from Backend:", result); 
+    console.log("Full Backend Response:", result); // Log the full response
 
     return {
       success: true,
       message: result.message,
+      data: result.data, // Ensure `data` includes `id`
     };
   } catch (error) {
-    console.error("Erreur lors de l'appel à l'API :", error.message);
+    console.error("Error in loginUser:", error);
     return {
       success: false,
       message: error.message || "Erreur inconnue.",
     };
   }
 };
-
-
