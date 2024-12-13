@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer-color" border absolute>
+  <v-footer id="footer-color" class="left-0 bottom-0" border absolute>
     <v-sheet class="d-flex align-center justify-center flex-wrap text-center mx-auto px-4" >
     <Infolettre />
 

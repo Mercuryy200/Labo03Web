@@ -6,16 +6,16 @@
         <v-card>
           <v-card-title class="headline">Connexion</v-card-title>
           <v-card-text>
-            <v-form ref="loginForm" @submit.prevent>
+            <v-form @submit.prevent = "handleLogin">
               <v-text-field
                 label="Email"
-                v-model="form.courriel"
+                v-model="courriel"
                 type="email"
                 required
               ></v-text-field>
               <v-text-field
                 label="Password"
-                v-model="form.mot_de_passe"
+                v-model="password"
                 :type="showPassword ? 'text' : 'password'"
                 required
               ></v-text-field>
@@ -65,14 +65,45 @@
   </v-container>
 </template>
 
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { loginUser } from "@/services/utilisateur.service";
+import {useUserStore} from "@/stores/user"; 
+
+const courriel = ref("");
+const password = ref("");
+const router = useRouter();
+
+const handleLogin = async () => {
+  const data = JSON.stringify({
+    courriel: courriel.value,
+    password: password.value,
+  });
+
+  const response = await loginUser(data);
+  const userStore = useUserStore();
+
+
+  if (response.success) {
+    if (response.data && response.data.id) {
+      const userId = response.data.id;
+
+
+      userStore.login(response.data.id);
+      await router.push(`/users/${userId}`);
+    } else {
+      console.error("ID Introuvable:", response.data);
+    }
+  } else {
+    console.error("Erreur de connexion :", response.message);
+  }
+};
+</script>
 <script>
 export default {
   data() {
     return {
-      form: {
-        courriel: "",
-        mot_de_passe: "",
-      },
       showPassword: false,
       errorMessage: "",
     };

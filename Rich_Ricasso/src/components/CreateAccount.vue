@@ -61,14 +61,16 @@
 <script setup>
 import { ref } from "vue";
 import { createUtilisateur } from "@/services/utilisateur.service";
+import {useRouter} from "vue-router";
 
+const router = useRouter();
 const courriel = ref("");
 const prenom = ref("");
 const nom = ref("");
 const password = ref("");
 
 const handleSubmit = async () => {
-  // Prepare the data to be sent
+  
   const data = JSON.stringify({
     prenom: prenom.value,
     nom: nom.value,
@@ -77,10 +79,10 @@ const handleSubmit = async () => {
   });
 
   try {
-    // Call the function to send data to the API
     const response = await createUtilisateur(data);
 
     if (response.success) {
+      await router.push(`/login`);
       alert(response.message || "Utilisateur créé avec succès !");
     } else {
       alert(response.message || "Erreur lors de la création de l'utilisateur.");

@@ -1,8 +1,9 @@
 {
   "name": "Rich_Ricasso",
+
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore"
@@ -16,6 +17,7 @@
     "vuetify": "^3.6.11"
   },
   "devDependencies": {
+    
     "@vitejs/plugin-vue": "^5.0.5",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
@@ -35,4 +37,5 @@
     "vite-plugin-vuetify": "^2.0.3",
     "vue-router": "^4.4.0"
   }
+  
 }
